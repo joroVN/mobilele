@@ -3,9 +3,7 @@ package com.softuni.mobilele.entities;
 import com.softuni.mobilele.entities.enums.EngineEnum;
 import com.softuni.mobilele.entities.enums.TransmissionEnum;
 import jakarta.persistence.*;
-import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.annotations.Type;
 
 import java.math.BigDecimal;
 import java.util.UUID;
