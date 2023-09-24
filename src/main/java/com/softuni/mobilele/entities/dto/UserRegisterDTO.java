@@ -1,10 +1,19 @@
 package com.softuni.mobilele.entities.dto;
 
-public class UserRegisterDTO {
+import jakarta.validation.constraints.*;
 
+public class UserRegisterDTO {
+    @NotEmpty
+    @Email
     private String email;
+    @NotEmpty
+    @Size(min = 2, max = 20)
     private String firstName;
+    @NotEmpty
+    @Size(min = 2, max = 20)
     private String lastName;
+    @NotEmpty
+    @Size(min = 5)
     private String password;
     private String confirmPassword;
 

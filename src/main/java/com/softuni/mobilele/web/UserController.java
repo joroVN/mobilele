@@ -1,7 +1,6 @@
 package com.softuni.mobilele.web;
 
 import com.softuni.mobilele.entities.dto.UserLoginDTO;
-import com.softuni.mobilele.entities.dto.UserRegisterDTO;
 import com.softuni.mobilele.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,17 +34,6 @@ public class UserController {
         return "redirect:/";
     }
 
-    @GetMapping("/register")
-    public String register() {
-        return "auth-register";
-    }
 
-    @PostMapping("/register")
-    public String register(UserRegisterDTO userRegisterDTO) {
-
-        userService.registerAndLogin(userRegisterDTO);
-
-        return "redirect:/";
-    }
 
 }
