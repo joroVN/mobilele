@@ -9,11 +9,14 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.FIELD)
-@Constraint(validatedBy = UniqueUserEmailValidator.class)
-public @interface UniqueUserEmail {
+@Target(ElementType.TYPE)
+@Constraint(validatedBy = FieldMatchValidator.class)
+public @interface FieldMatch {
 
-    String message() default "Invalid Email";
+    String first();
+    String second();
+
+    String message() default "Invalid Date";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }
