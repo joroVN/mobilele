@@ -1,4 +1,4 @@
-package com.softuni.mobilele.entities.dto;
+package com.softuni.mobilele.model.dto;
 
 public class UserLoginDTO {
 

@@ -1,8 +1,9 @@
 package com.softuni.mobilele.service;
 
-import com.softuni.mobilele.entities.UserEntity;
-import com.softuni.mobilele.entities.dto.UserLoginDTO;
-import com.softuni.mobilele.entities.dto.UserRegisterDTO;
+import com.softuni.mobilele.model.UserEntity;
+import com.softuni.mobilele.model.dto.UserLoginDTO;
+import com.softuni.mobilele.model.dto.UserRegisterDTO;
+import com.softuni.mobilele.model.mapper.UserMapper;
 import com.softuni.mobilele.repository.UserRepository;
 import com.softuni.mobilele.user.CurrentUser;
 import org.slf4j.Logger;
@@ -14,28 +15,23 @@ import java.util.Optional;
 
 @Service
 public class UserService {
-
     private final UserRepository userRepository;
     private final CurrentUser currentUser;
     private final PasswordEncoder passwordEncoder;
     private final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
+    private final UserMapper userMapper;
 
-    public UserService(UserRepository userRepository, CurrentUser currentUser, PasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository, CurrentUser currentUser, PasswordEncoder passwordEncoder, UserMapper userMapper) {
         this.userRepository = userRepository;
         this.currentUser = currentUser;
         this.passwordEncoder = passwordEncoder;
+        this.userMapper = userMapper;
     }
 
     public void registerAndLogin(UserRegisterDTO userRegisterDTO) {
-        UserEntity newUser = new UserEntity()
-                .setActive(true)
-                .setEmail(userRegisterDTO.getEmail())
-                .setFirstName(userRegisterDTO.getFirstName())
-                .setLastName(userRegisterDTO.getLastName())
-                .setPassword(passwordEncoder.encode(userRegisterDTO.getPassword()));
-
+        UserEntity newUser = userMapper.userDtoToUserEntity(userRegisterDTO);
+        newUser.setPassword(passwordEncoder.encode(userRegisterDTO.getPassword()));
         userRepository.save(newUser);
-
         login(newUser);
     }
 

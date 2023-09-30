@@ -1,6 +1,6 @@
-package com.softuni.mobilele.entities;
+package com.softuni.mobilele.model;
 
-import com.softuni.mobilele.entities.enums.UserRoleEnum;
+import com.softuni.mobilele.model.enums.UserRoleEnum;
 import jakarta.persistence.*;
 
 @Entity

@@ -1,4 +1,4 @@
-package com.softuni.mobilele.entities;
+package com.softuni.mobilele.model;
 
 import jakarta.persistence.*;
 

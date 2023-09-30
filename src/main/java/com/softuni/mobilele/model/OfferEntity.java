@@ -1,7 +1,7 @@
-package com.softuni.mobilele.entities;
+package com.softuni.mobilele.model;
 
-import com.softuni.mobilele.entities.enums.EngineEnum;
-import com.softuni.mobilele.entities.enums.TransmissionEnum;
+import com.softuni.mobilele.model.enums.EngineEnum;
+import com.softuni.mobilele.model.enums.TransmissionEnum;
 import jakarta.persistence.*;
 import org.hibernate.annotations.JdbcTypeCode;
 
