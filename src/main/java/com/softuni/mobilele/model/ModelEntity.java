@@ -17,7 +17,7 @@ public class ModelEntity extends BaseEntity {
     private String imageUrl;
 
     private int startYear;
-    private int endYear;
+    private Long endYear;
     @ManyToOne
     private BrandEntity brand;
 
@@ -64,11 +64,11 @@ public class ModelEntity extends BaseEntity {
         return this;
     }
 
-    public int getEndYear() {
+    public Long getEndYear() {
         return endYear;
     }
 
-    public ModelEntity setEndYear(int endYear) {
+    public ModelEntity setEndYear(Long endYear) {
         this.endYear = endYear;
         return this;
     }
