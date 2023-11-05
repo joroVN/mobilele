@@ -8,7 +8,7 @@ import com.softuni.mobilele.model.mapper.OfferMapper;
 import com.softuni.mobilele.repository.ModelRepository;
 import com.softuni.mobilele.repository.OfferRepository;
 import com.softuni.mobilele.repository.UserRepository;
-import com.softuni.mobilele.user.CurrentUser;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,30 +17,25 @@ public class OfferService {
     private final OfferRepository offerRepository;
     private final OfferMapper offerMapper;
     private final UserRepository userRepository;
-
     private final ModelRepository modelRepository;
-    private final CurrentUser currentUser;
 
-    public OfferService(OfferRepository offerRepository, OfferMapper offerMapper, UserRepository userRepository, ModelRepository modelRepository, CurrentUser currentUser) {
+    public OfferService(OfferRepository offerRepository, OfferMapper offerMapper, UserRepository userRepository, ModelRepository modelRepository) {
         this.offerRepository = offerRepository;
         this.offerMapper = offerMapper;
         this.userRepository = userRepository;
         this.modelRepository = modelRepository;
-        this.currentUser = currentUser;
     }
 
 
-    public void addOffer(AddOfferDTO addOfferDTO) {
+    public void addOffer(AddOfferDTO addOfferDTO, UserDetails userDetails) {
         OfferEntity newOffer = offerMapper.addOfferDtoToOfferEntity(addOfferDTO);
 
-        // TODO - current user should be logged in
-
-        UserEntity userEntity = userRepository.findByEmail(currentUser.getEmail()).orElseThrow();
+        UserEntity seller = userRepository.findByEmail(userDetails.getUsername()).orElseThrow();
 
         ModelEntity model = modelRepository.findById(addOfferDTO.getModelId()).orElseThrow();
 
         newOffer.setModel(model);
-        newOffer.setSeller(userEntity);
+        newOffer.setSeller(seller);
 
         offerRepository.save(newOffer);
     }

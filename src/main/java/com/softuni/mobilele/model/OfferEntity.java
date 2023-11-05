@@ -29,7 +29,7 @@ public class OfferEntity {
     private BigDecimal price;
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private TransmissionEnum transmissionEnum;
+    private TransmissionEnum transmission;
 
     private int year;
     @ManyToOne
@@ -85,12 +85,12 @@ public class OfferEntity {
         return this;
     }
 
-    public TransmissionEnum getTransmissionEnum() {
-        return transmissionEnum;
+    public TransmissionEnum getTransmission() {
+        return transmission;
     }
 
-    public OfferEntity setTransmissionEnum(TransmissionEnum transmissionEnum) {
-        this.transmissionEnum = transmissionEnum;
+    public OfferEntity setTransmission(TransmissionEnum transmission) {
+        this.transmission = transmission;
         return this;
     }
 
@@ -138,7 +138,7 @@ public class OfferEntity {
                 ", imageUrl='" + imageUrl + '\'' +
                 ", mileage=" + mileage +
                 ", price=" + price +
-                ", transmissionEnum=" + transmissionEnum +
+                ", transmission=" + transmission +
                 ", year=" + year +
                 ", model=" + model +
                 ", seller=" + seller +

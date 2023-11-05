@@ -12,7 +12,7 @@ public class UserRoleEntity {
     private Long id;
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private UserRoleEnum userRole;
+    private UserRoleEnum role;
 
     public Long getId() {
         return id;
@@ -23,12 +23,12 @@ public class UserRoleEntity {
         return this;
     }
 
-    public UserRoleEnum getUserRole() {
-        return userRole;
+    public UserRoleEnum getRole() {
+        return role;
     }
 
-    public UserRoleEntity setUserRole(UserRoleEnum userRole) {
-        this.userRole = userRole;
+    public UserRoleEntity setRole(UserRoleEnum userRole) {
+        this.role = userRole;
         return this;
     }
 
@@ -36,7 +36,7 @@ public class UserRoleEntity {
     public String toString() {
         return "UserRoleEntity{" +
                 "id=" + id +
-                ", userRole=" + userRole +
+                ", userRole=" + role +
                 '}';
     }
 }
