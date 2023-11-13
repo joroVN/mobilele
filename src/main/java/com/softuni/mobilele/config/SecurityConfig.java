@@ -40,7 +40,8 @@ public class SecurityConfig {
                                 .requestMatchers(
                                         "/",
                                         "/users/login",
-                                        "/users/register").permitAll()
+                                        "/users/register",
+                                        "/offers/all").permitAll()
                                 .anyRequest().authenticated()
                 )
                 .formLogin(login ->

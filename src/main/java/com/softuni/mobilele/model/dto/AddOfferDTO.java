@@ -4,6 +4,8 @@ import com.softuni.mobilele.model.enums.EngineEnum;
 import com.softuni.mobilele.model.enums.TransmissionEnum;
 import jakarta.validation.constraints.*;
 
+import java.math.BigDecimal;
+
 public class AddOfferDTO {
     @NotNull
     @Min(1)
@@ -12,7 +14,7 @@ public class AddOfferDTO {
     private EngineEnum engine;
     @Positive
     @NotNull
-    private Integer price;
+    private BigDecimal price;
     @Min(1900)
     @NotNull
     private Integer year;
@@ -62,11 +64,11 @@ public class AddOfferDTO {
         return this;
     }
 
-    public Integer getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public AddOfferDTO setPrice(Integer price) {
+    public AddOfferDTO setPrice(BigDecimal price) {
         this.price = price;
         return this;
     }

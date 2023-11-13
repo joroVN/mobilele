@@ -17,24 +17,20 @@ public class OfferEntity {
     @GeneratedValue(strategy = GenerationType.UUID)
     @JdbcTypeCode(java.sql.Types.VARCHAR)
     private UUID id;
-
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private EngineEnum engine;
-
+    @Column(name = "image_url")
     private String imageUrl;
-
     private int mileage;
     @Column(nullable = false)
     private BigDecimal price;
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private TransmissionEnum transmission;
-
     private int year;
     @ManyToOne
     private ModelEntity model;
-
     @ManyToOne
     private UserEntity seller;
     @Column(nullable = false)
