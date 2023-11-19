@@ -2,6 +2,8 @@ package com.softuni.mobilele.web;
 
 import com.softuni.mobilele.model.dto.UserRegisterDTO;
 import com.softuni.mobilele.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -34,7 +36,9 @@ public class UserRegistrationController {
     @PostMapping("/register")
     public String register(@Valid UserRegisterDTO userModel,
                            BindingResult bindingResult,
-                           RedirectAttributes redirectAttributes) {
+                           RedirectAttributes redirectAttributes,
+                           HttpServletRequest request,
+                           HttpServletResponse response) {
 
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("userModel", userModel);
@@ -42,7 +46,7 @@ public class UserRegistrationController {
             return "redirect:/users/register";
         }
 
-        userService.registerAndLogin(userModel);
+        userService.registerAndLogin(userModel, request, response);
 
         return "redirect:/";
     }
